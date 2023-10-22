@@ -1,0 +1,81 @@
+#include "GenTree.h"
+
+TreeNode* GenTree::GetRoot()
+{
+}
+
+TreeNode* GenTree::GetParent(TreeNode* node)
+{
+}
+
+std::vector<TreeNode*> GenTree::GetChildren(TreeNode* node)
+{
+}
+
+int GenTree::size()
+{
+}
+
+int GenTree::depth()
+{
+}
+
+bool GenTree::isEmpty(TreeNode* node)
+{
+    
+}
+
+bool GenTree::isRoot(TreeNode* node)
+{
+}
+
+bool GenTree::isLeaf(TreeNode* node)
+{
+    return (node != nullptr) && (GetChildren(node).empty());
+}
+
+
+
+
+
+
+
+=================== H FILE
+
+
+#pragma once
+#include <vector>
+
+class TreeNode;
+
+class GenTree
+{
+public:
+    GenTree();
+
+    TreeNode* GetRoot();
+    TreeNode* GetParent(TreeNode* node);
+    std::vector<TreeNode*> GetChildren(TreeNode* node);
+
+    int size();
+    int depth();
+    bool isEmpty(TreeNode* node);
+    bool isRoot(TreeNode* node);
+    bool isLeaf(TreeNode* node);
+private:
+    TreeNode* root;
+    
+};
+
+========================================
+
+#pragma once
+#include <vector>
+
+class TreeNode
+{
+public:
+    int data;
+    std::vector<TreeNode*> children;
+    TreeNode(int value) : data(value){}
+};
