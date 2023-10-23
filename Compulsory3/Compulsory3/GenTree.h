@@ -10,14 +10,17 @@ public:
 
     TreeNode* GetRoot();
     TreeNode* GetParent(TreeNode* node);
+    TreeNode* newNode(int value);
     std::vector<TreeNode*> GetChildren(TreeNode* node);
 
     int size();
-    int depth();
+    int depth(TreeNode* node);
     bool isEmpty(TreeNode* node);
     bool isRoot(TreeNode* node);
     bool isLeaf(TreeNode* node);
+
+    void BreadthFirstTraversal(TreeNode * root);
 private:
-    TreeNode* root;
+    TreeNode* TreeRoot;
     
 };
