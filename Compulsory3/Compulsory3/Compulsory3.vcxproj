@@ -156,10 +156,14 @@
   <ItemGroup>
     <ClCompile Include="Compulsory3.cpp" />
     <ClCompile Include="GenTree.cpp" />
+    <ClCompile Include="Graph.cpp" />
+    <ClCompile Include="GraphVertex.cpp" />
     <ClCompile Include="TreeNode.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GenTree.h" />
+    <ClInclude Include="Graph.h" />
+    <ClInclude Include="GraphVertex.h" />
     <ClInclude Include="TreeNode.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
