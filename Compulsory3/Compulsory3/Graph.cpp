@@ -1,13 +1,18 @@
 ﻿#include "Graph.h"
 
 #include <iostream>
+#include <queue>
 
 Graph::Graph()
 {
     addVertex(1);
     addVertex(2, 0);
     addVertex(3, 0);
+    addVertex(33, 1);
+    addVertex(4, 1);
     addVertex(22,2);
+    addVertex(5, 2);
+    addVertex(6, 0);
 
     //Print all Edges
     for (int i = 0; i < edges.size(); i++)
@@ -19,6 +24,8 @@ Graph::Graph()
     {
         std::cout << vertices[j]->data << std::endl;
     }
+
+    BreadthTraversal(0);
     
 }
 
@@ -163,6 +170,28 @@ void Graph::DeleteEdge(int node1, int node2)
 
 void Graph::BreadthTraversal(int startNode)
 {
-    
+    if (isEmpty()) return;
+    // Mark all the vertices as not visited
+    for (int i = 0; i < vertices.size(); i++)
+    {
+        vertices[i]->isVisited = false;
+    }
+    vertices[startNode]->isVisited = true;
+    std::queue<GraphVertex*> queue;
+    queue.push(vertices[startNode]);
+    while (!queue.empty())
+    {
+        std::cout << queue.front()->data << " ";
+        GraphVertex* current = queue.front();
+        queue.pop();
+        for (int i = 0; i < current->AdjacentVertices.size(); i++)
+        {
+            if (!current->AdjacentVertices[i]->isVisited)
+            {
+                current->AdjacentVertices[i]->isVisited = true;
+                queue.push(current->AdjacentVertices[i]);
+            }
+        }
+    }
 }
 
