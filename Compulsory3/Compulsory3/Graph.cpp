@@ -29,6 +29,10 @@ Graph::Graph()
     
 }
 
+/**
+ * \brief Creates a vertex with no parent
+ * \param value value of vertex
+ */
 void Graph::addVertex(int value)
 {
     //Just gonna use this for the first vertex i think. 
@@ -36,6 +40,11 @@ void Graph::addVertex(int value)
     vertices.push_back(newVertex);
 }
 
+/**
+ * \brief Creates a vertex and links it with another vertex
+ * \param value value of vertex
+ * \param ParentID parent vertex
+ */
 void Graph::addVertex(int value, int ParentID)
 {
     GraphVertex* ParentVertex = vertices[ParentID];
@@ -50,12 +59,21 @@ void Graph::addVertex(int value, int ParentID)
     edges.emplace_back(ParentVertex->data, newVertex->data);
 }
 
+/**
+ * \brief Creates vertex at a random location in the graph
+ * \param value vertex value
+ */
 void Graph::addRandom(int value)
 {
     srand(time(NULL));
     addVertex(value, rand() % vertices.size());
 }
 
+/**
+ * \brief Creates an edge between two nodes
+ * \param node1 Node 1
+ * \param node2 Node 2
+ */
 void Graph::addEdge(int node1, int node2)
 {
     GraphVertex* ParentVertex = vertices[node1];
@@ -66,36 +84,62 @@ void Graph::addEdge(int node1, int node2)
     edges.emplace_back(ParentVertex->data, ChildVertex->data);
 }
 
+
 GraphVertex* Graph::GetNode(int nodeID)
 {
     return vertices[nodeID];
 }
 
+/**
+ * \brief Returns all adjacent vertices of a node
+ * \param nodeID node to check
+ * \return vector of adjacent vertices
+ */
 std::vector<GraphVertex*> Graph::GetAdjacent(int nodeID)
 {
     return vertices[nodeID]->AdjacentVertices;
 }
 
+/**
+ * \brief Returns all vertices in graph
+ * \return list of all vertices in graph
+ */
 std::vector<GraphVertex*> Graph::GetAllVertices()
 {
     return vertices;
 }
 
+/**
+ * \brief Returns all edges in graph
+ * \return Vector of all edges in graph
+ */
 std::vector<std::pair<int, int>> Graph::GetAllEdges()
 {
     return edges;
 }
 
+/**
+ * \brief Returns the number of vertices in the graph
+ * \return number of vertices in graph
+ */
 int Graph::size()
 {
     return vertices.size();
 }
 
+/**
+ * \brief Checks if graph is empty
+ * \return true if graph is empty
+ */
 int Graph::isEmpty()
 {
     return vertices.size() == 0;
 }
 
+/**
+ * \brief Deletes a node from the tree and disconnects all edges connected to it
+ * \param node node to delete
+ */
 void Graph::DeleteNode(int node)
 {
     GraphVertex* nodeToDelete = vertices[node];
@@ -130,10 +174,14 @@ void Graph::DeleteNode(int node)
     vertices.erase(vertices.begin() + node);
     //Delete node
     delete nodeToDelete;
-
-    //TODO: Do i connect the potential missing nodes to eachother here?
+    
 }
 
+/**
+ * \brief Deletes the edge between two nodes
+ * \param node1 Node 1
+ * \param node2 Node 2
+ */
 void Graph::DeleteEdge(int node1, int node2)
 {
     GraphVertex* first = vertices[node1];
@@ -168,6 +216,10 @@ void Graph::DeleteEdge(int node1, int node2)
     
 }
 
+/**
+ * \brief Performs a breadth first traversal of the graph
+ * \param startNode node to start from
+ */
 void Graph::BreadthTraversal(int startNode)
 {
     if (isEmpty()) return;

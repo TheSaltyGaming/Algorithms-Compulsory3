@@ -4,8 +4,8 @@
 
 int main(int argc, char* argv[])
 {
-    //GenTree tree;
-    Graph graph;
+    GenTree tree;
+    //Graph graph;
     
     return 0;
 }
